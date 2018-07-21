@@ -617,6 +617,12 @@ public class ShadeMojo
                 continue;
             }
 
+            if ( artifact.getFile() == null || !artifact.getFile().isFile() )
+            {
+                getLog().info( "Skipping invalid dependency " + artifact.getId() + " in the shaded jar." );
+                continue;
+            }
+
             getLog().info( "Including " + artifact.getId() + " in the shaded jar." );
 
             artifacts.add( artifact.getFile() );
